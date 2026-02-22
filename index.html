@@ -3,259 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAVITRI | Premium Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <title>Savitri Electronics & Furniture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --bg-gray: #1d1d1f; /* Apple Space Gray */
-            --gold: #d4af37;    /* Luxury Gold */
-            --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.05);
+            --apple-black: #161617;
+            --apple-gray: #f5f5f7;
+            --gold: #BF953F; /* Elegant Metallic Gold */
+            --gold-light: #FCF6BA;
         }
 
         body {
-            background-color: var(--bg-gray);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+            background-color: var(--apple-black);
+            color: #f5f5f7;
+            font-family: 'Inter', -apple-system, sans-serif;
             margin: 0;
+            overflow-x: hidden;
         }
 
-        /* 3-SECOND INTRO ANIMATION */
-        #intro-overlay {
+        /* 3-SECOND CINEMATIC INTRO */
+        #intro-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: black;
-            z-index: 9999;
+            background: #000;
+            z-index: 10000;
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: fadeOut 1s ease 3s forwards;
+            animation: fadeOut 0.8s ease 3s forwards;
         }
-        .intro-text {
-            font-weight: 900;
-            font-size: 3rem;
-            letter-spacing: 5px;
+        .intro-logo {
+            font-weight: 700;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
             opacity: 0;
-            animation: zoomFade 2.5s ease-in-out forwards;
+            animation: appleZoom 2.5s ease-in-out forwards;
+            background: linear-gradient(to right, var(--gold), #ffffff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .gold-span { color: var(--gold); }
-
-        @keyframes zoomFade {
-            0% { opacity: 0; transform: scale(0.8); filter: blur(10px); }
-            50% { opacity: 1; transform: scale(1); filter: blur(0); }
-            100% { opacity: 0; transform: scale(1.1); }
+        @keyframes appleZoom {
+            0% { opacity: 0; transform: scale(1.1); filter: blur(10px); }
+            40% { opacity: 1; transform: scale(1); filter: blur(0); }
+            80% { opacity: 1; transform: scale(1); filter: blur(0); }
+            100% { opacity: 0; transform: scale(0.95); }
         }
         @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
 
-        /* HEADER & BRANDING */
+        /* OFFICIAL APPLE NAV */
         .navbar {
-            background: rgba(29, 29, 31, 0.8) !important;
-            backdrop-filter: blur(20px);
+            background: rgba(22, 22, 23, 0.8) !important;
+            backdrop-filter: saturate(180%) blur(20px);
+            padding: 0;
+            height: 48px;
+            font-size: 12px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 20px 0;
         }
-        .navbar-brand {
-            font-weight: 900;
-            font-size: 28px;
-            letter-spacing: -1px;
-            color: var(--white) !important;
-            text-transform: uppercase;
+        .navbar-brand { font-weight: 600; font-size: 17px; color: #fff !important; }
+        .gold-brand {
+            background: linear-gradient(to right, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
         }
 
-        /* HERO SECTION */
-        .hero {
-            height: 90vh;
+        /* HERO SECTIONS (Full Width) */
+        .hero-unit {
+            height: 100vh;
+            width: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: radial-gradient(circle at center, #2c2c2e 0%, #1d1d1f 100%);
+            padding-top: 50px;
+            background-color: #000;
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: contain;
         }
-        .hero h1 { font-size: 5rem; font-weight: 900; line-height: 1; margin-bottom: 20px; }
+        .hero-unit.iphone { background-image: url('https://www.apple.com/v/iphone-15-pro/c/images/overview/welcome/hero__d1bgfv699ay6_large.jpg'); }
+        
+        .hero-headline { font-size: 56px; font-weight: 700; margin-bottom: 6px; }
+        .hero-sub { font-size: 28px; font-weight: 400; margin-bottom: 18px; color: #f5f5f7; }
+        
+        /* THE APPLE GRID (2x2) */
+        .apple-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; }
+        .grid-item {
+            height: 580px;
+            background: #161617;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .grid-item h3 { font-size: 40px; font-weight: 600; }
+        .grid-item p { font-size: 21px; color: #86868b; }
+        .grid-img {
+            width: 80%;
+            position: absolute;
+            bottom: 0;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .grid-item:hover .grid-img { transform: scale(1.05); }
 
-        /* PRODUCT CARDS - APPLE STYLE */
-        .apple-card {
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 25px;
-            padding: 30px;
-            transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-            height: 100%;
-        }
-        .apple-card:hover {
-            transform: scale(1.03);
-            background: rgba(255,255,255,0.08);
-            border-color: var(--gold);
-        }
-        .apple-card img {
-            width: 100%; height: 220px; object-fit: contain;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-        }
-        .price-tag { font-size: 24px; font-weight: 600; color: var(--gold); }
-
-        /* BUTTONS */
-        .btn-gold {
-            background: var(--gold);
-            color: black;
-            border-radius: 50px;
-            font-weight: 700;
-            border: none;
-            padding: 12px 25px;
-            width: 100%;
+        /* CART & BUTTONS */
+        .btn-apple {
+            background: #0071e3;
+            color: #fff;
+            border-radius: 980px;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 14px;
             transition: 0.3s;
         }
-        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
+        .btn-apple:hover { background: #0077ed; color: #fff; }
+        
+        .price { font-size: 17px; margin-top: 10px; font-weight: 300; }
+        
+        /* SHOPPING BAG */
+        .bag-count { font-size: 10px; background: #fff; color: #000; border-radius: 50%; padding: 0 4px; position: relative; top: -10px; }
 
-        .btn-emi {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 50px;
-            width: 100%;
-            padding: 8px;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
-        /* MODALS */
-        .modal-content { background: #1c1c1e; color: white; border: 1px solid var(--gold); border-radius: 30px; }
-        .cart-dot { background: var(--gold); color: black; border-radius: 50%; padding: 2px 6px; font-size: 10px; position: absolute; }
-
-        /* WHATSAPP FLOAT */
-        .wa-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--gold); width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: black; font-size: 25px; text-decoration: none; z-index: 1000;
+        @media (max-width: 768px) {
+            .apple-grid { grid-template-columns: 1fr; }
+            .hero-headline { font-size: 32px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="intro-overlay">
-        <div class="intro-text">
-            <span class="gold-span">SAVITRI</span> ELECTRONICS
-        </div>
+    <div id="intro-screen">
+        <div class="intro-logo">SAVITRI</div>
     </div>
 
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-                <span class="gold-span">SAVITRI</span> ELECTRONICS & FURNITURE
-            </a>
-            <div class="ms-auto">
-                <div class="position-relative d-inline-block" data-bs-toggle="modal" data-bs-target="#cartModal" style="cursor:pointer">
-                    <i class="fas fa-shopping-bag fa-lg"></i>
-                    <span id="cart-count" class="cart-dot">0</span>
-                </div>
+    <nav class="navbar navbar-expand navbar-dark sticky-top">
+        <div class="container justify-content-between">
+            <a class="navbar-brand" href="#"><span class="gold-brand">SAVITRI</span></a>
+            <div class="navbar-nav align-items-center">
+                <a class="nav-link text-white-50 px-3" href="#electronics">Electronics</a>
+                <a class="nav-link text-white-50 px-3" href="#furniture">Furniture</a>
+                <a class="nav-link px-3" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="bag-count" id="cart-count">0</span>
+                </a>
             </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container" data-aos="fade-up">
-            <h1>Elegance.<br><span class="gold-span">Refined.</span></h1>
-            <p class="lead text-secondary">Premium Electronics & Furniture in Rudrapur.</p>
-            <a href="#store" class="btn btn-gold w-auto px-5 mt-4">Start Shopping</a>
+    <section class="hero-unit" data-aos="fade">
+        <h1 class="hero-headline"><span class="gold-brand">Savitri</span> Prime.</h1>
+        <p class="hero-sub">Latest Tech. Modern Comfort.</p>
+        <div class="d-flex gap-3">
+            <a href="#electronics" class="btn-apple">Learn more ></a>
+            <a href="#electronics" class="btn-apple" style="background:transparent; border:1px solid #0071e3; color:#0071e3">Buy ></a>
         </div>
     </section>
 
-    <div class="container py-5" id="store">
-        <h2 class="mb-5 fw-bold" data-aos="fade-right">Electronics <span class="text-secondary">Pro.</span></h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="apple-card" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=500" alt="LED">
-                    <h4 class="fw-bold">Ultra 4K LED TV</h4>
-                    <p class="text-secondary small">Cinematic experience at home.</p>
-                    <div class="price-tag mb-3">₹34,990</div>
-                    <button class="btn-gold" onclick="addToCart('4K LED TV', 34990)">Add to Bag</button>
-                    <button class="btn-emi">Bajaj EMI: ₹2,915/mo</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="apple-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" alt="Fridge">
-                    <h4 class="fw-bold">Smart Refrigerator</h4>
-                    <p class="text-secondary small">Twin cooling technology.</p>
-                    <div class="price-tag mb-3">₹28,500</div>
-                    <button class="btn-gold" onclick="addToCart('Smart Refrigerator', 28500)">Add to Bag</button>
-                    <button class="btn-emi">Bajaj EMI: ₹2,375/mo</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="apple-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=500" alt="Wash">
-                    <h4 class="fw-bold">Washing Machine</h4>
-                    <p class="text-secondary small">AI-Powered deep clean.</p>
-                    <div class="price-tag mb-3">₹18,990</div>
-                    <button class="btn-gold" onclick="addToCart('Washing Machine', 18990)">Add to Bag</button>
-                    <button class="btn-emi">Bajaj EMI: ₹1,582/mo</button>
-                </div>
-            </div>
+    <div class="apple-grid">
+        <div class="grid-item" data-aos="fade-up">
+            <h3>LED 4K Pro.</h3>
+            <p>Immense color. Infinite detail.</p>
+            <div class="price">From ₹34,900 or ₹2,900/mo. with <br><b>Bajaj Finance</b></div>
+            <a href="javascript:void(0)" onclick="addToCart('LED 4K Pro', 34900)" class="btn-apple mt-3">Add to Bag</a>
+            <img src="https://www.apple.com/v/tv-home/k/images/overview/tv_app_hero__eb6p6659698y_large.jpg" class="grid-img">
         </div>
 
-        <h2 class="my-5 fw-bold" data-aos="fade-right">Furniture <span class="text-secondary">Luxury.</span></h2>
-        <div class="row g-4 mb-5">
-            <div class="col-md-6">
-                <div class="apple-card" data-aos="zoom-in">
-                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=500" alt="Triveni">
-                    <h4 class="fw-bold">Triveni Almirah Gold Edition</h4>
-                    <p class="text-secondary small">Unmatched steel security.</p>
-                    <div class="price-tag mb-3">₹15,200</div>
-                    <button class="btn-gold" onclick="addToCart('Triveni Almirah', 15200)">Add to Bag</button>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="apple-card" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500" alt="Sofa">
-                    <h4 class="fw-bold">Premium Velvet Sofa</h4>
-                    <p class="text-secondary small">Italian design comfort.</p>
-                    <div class="price-tag mb-3">₹45,000</div>
-                    <button class="btn-gold" onclick="addToCart('Velvet Sofa', 45000)">Add to Bag</button>
-                </div>
-            </div>
+        <div class="grid-item" style="background-color: #f5f5f7; color: #1d1d1f;" data-aos="fade-up">
+            <h3>Smart Cooling.</h3>
+            <p>Freshness reimagined.</p>
+            <div class="price">Available with No-Cost EMI</div>
+            <a href="javascript:void(0)" onclick="addToCart('Smart Fridge', 26500)" class="btn-apple mt-3">Add to Bag</a>
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600" class="grid-img" style="mix-blend-mode: multiply;">
+        </div>
+
+        <div class="grid-item" style="background-color: #000; color: #fff;" data-aos="fade-up">
+            <h3><span class="gold-brand">Triveni</span> Almirah.</h3>
+            <p>Titanium strength. Golden Finish.</p>
+            <div class="price">Exclusive Rudrapur Stock</div>
+            <a href="javascript:void(0)" onclick="addToCart('Triveni Almirah', 15200)" class="btn-apple mt-3">Add to Bag</a>
+            <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600" class="grid-img">
+        </div>
+
+        <div class="grid-item" style="background-color: #fff; color: #1d1d1f;" data-aos="fade-up">
+            <h3>Luxe Furniture.</h3>
+            <p>Design that speaks comfort.</p>
+            <div class="price">Customizable sets available</div>
+            <a href="javascript:void(0)" onclick="addToCart('Luxe Sofa', 45000)" class="btn-apple mt-3">Add to Bag</a>
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600" class="grid-img" style="mix-blend-mode: multiply;">
         </div>
     </div>
 
     <div class="modal fade" id="cartModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body p-4">
-                    <h3 class="fw-bold gold-span">Your Bag.</h3>
-                    <div id="cart-list" class="my-4"></div>
+            <div class="modal-content border-0 shadow-lg" style="background:#fff; color:#000; border-radius: 20px;">
+                <div class="modal-body p-5">
+                    <h2 class="fw-bold mb-4">Review your Bag.</h2>
+                    <div id="cart-list" class="mb-4"></div>
                     <div class="d-flex justify-content-between fs-4 fw-bold border-top pt-3">
                         <span>Total</span><span id="cart-total">₹0</span>
                     </div>
-                    <div class="mt-4 p-3 rounded bg-black text-center border border-secondary">
-                        <small class="text-secondary">Scan to Pay (UPI ID: 7080935352@ptyes)</small><br>
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=upi://pay?pa=7080935352@ptyes" class="mt-2" alt="QR">
+                    <div class="bg-light p-3 mt-3 rounded text-center">
+                        <small class="text-secondary">Scan to Pay via UPI</small><br>
+                        <code class="text-dark">7080935352@ptyes</code>
                     </div>
-                    <button class="btn btn-gold w-100 mt-4 py-3" onclick="checkout()">ORDER ON WHATSAPP</button>
+                    <button class="btn-apple w-100 mt-4 py-3" onclick="checkout()">Check Out with WhatsApp</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="py-5 text-center border-top border-secondary">
-        <p class="gold-span fw-bold">SAVITRI ELECTRONICS & FURNITURE</p>
-        <p class="text-secondary small">Rudrapur, UP 247204 | +91 7080935352</p>
+    <footer class="py-5 bg-white text-dark-50 text-center" style="font-size:12px">
+        <div class="container border-top pt-4">
+            <p>Copyright © 2026 Savitri Electronics & Furniture. All rights reserved.</p>
+            <p>Rudrapur, UP 247204 | Phone: +91 7080935352</p>
+        </div>
     </footer>
-
-    <a href="https://wa.me/917080935352" class="wa-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 800 });
         let cart = [];
 
         function addToCart(n, p) {
@@ -267,20 +241,20 @@
         function updateCart() {
             let l = document.getElementById('cart-list');
             let t = 0;
-            l.innerHTML = "";
+            l.innerHTML = cart.length ? "" : "Your bag is empty.";
             cart.forEach(i => {
                 t += i.p;
-                l.innerHTML += `<div class="d-flex justify-content-between mb-2"><span>${i.n}</span><span>₹${i.p.toLocaleString()}</span></div>`;
+                l.innerHTML += `<div class="d-flex justify-content-between py-2 border-bottom"><span>${i.n}</span><span>₹${i.p.toLocaleString()}</span></div>`;
             });
             document.getElementById('cart-total').innerText = '₹' + t.toLocaleString();
         }
 
         function checkout() {
-            if(!cart.length) return alert("Bag is empty");
+            if(!cart.length) return;
             let total = cart.reduce((s, i) => s + i.p, 0);
-            let msg = "*GOLD ORDER - SAVITRI*%0A";
-            cart.forEach(i => msg += `• ${i.n} (₹${i.p})%0A`);
-            msg += `%0A💰 *TOTAL: ₹${total}*%0A💳 *UPI:* 7080935352@ptyes`;
+            let msg = "*SAVITRI ONLINE ORDER*%0A";
+            cart.forEach(i => msg += `• ${i.n} - ₹${i.p}%0A`);
+            msg += `%0A💰 *TOTAL: ₹${total}*%0A💳 *UPI ID:* 7080935352@ptyes`;
             window.open(`https://wa.me/917080935352?text=${msg}`, '_blank');
         }
     </script>
