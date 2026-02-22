@@ -3,181 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAVITRI | Electronics & Furniture Mega Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>SAVITRI | Premium Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --amazon-navy: #131921;
-            --amazon-orange: #febd69;
-            --bajaj-blue: #005dac;
-            --price-red: #B12704;
+            --bg-gray: #1d1d1f; /* Apple Space Gray */
+            --gold: #d4af37;    /* Luxury Gold */
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
-        body { font-family: 'Inter', sans-serif; background-color: #fff; }
+        body {
+            background-color: var(--bg-gray);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+        }
 
-        /* Header */
-        .navbar { background: var(--amazon-navy) !important; padding: 15px 0; }
-        .navbar-brand { font-weight: 800; font-size: 26px; color: white !important; cursor: pointer; }
-        .navbar-brand span { color: var(--amazon-orange); }
-        
-        /* Bajaj EMI Bar */
-        .emi-bar {
-            background: var(--bajaj-blue);
-            color: white;
-            padding: 10px 0;
-            font-size: 14px;
-            font-weight: 600;
+        /* 3-SECOND INTRO ANIMATION */
+        #intro-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: black;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeOut 1s ease 3s forwards;
+        }
+        .intro-text {
+            font-weight: 900;
+            font-size: 3rem;
+            letter-spacing: 5px;
+            opacity: 0;
+            animation: zoomFade 2.5s ease-in-out forwards;
+        }
+        .gold-span { color: var(--gold); }
+
+        @keyframes zoomFade {
+            0% { opacity: 0; transform: scale(0.8); filter: blur(10px); }
+            50% { opacity: 1; transform: scale(1); filter: blur(0); }
+            100% { opacity: 0; transform: scale(1.1); }
+        }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+        /* HEADER & BRANDING */
+        .navbar {
+            background: rgba(29, 29, 31, 0.8) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 0;
+        }
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 28px;
+            letter-spacing: -1px;
+            color: var(--white) !important;
+            text-transform: uppercase;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            background: radial-gradient(circle at center, #2c2c2e 0%, #1d1d1f 100%);
         }
+        .hero h1 { font-size: 5rem; font-weight: 900; line-height: 1; margin-bottom: 20px; }
 
-        /* Product Card Updates */
-        .product-card {
-            border: 1px solid #e2e2e2;
-            border-radius: 12px;
-            padding: 15px;
-            background: white;
+        /* PRODUCT CARDS - APPLE STYLE */
+        .apple-card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            padding: 30px;
+            transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            height: 100%;
+        }
+        .apple-card:hover {
+            transform: scale(1.03);
+            background: rgba(255,255,255,0.08);
+            border-color: var(--gold);
+        }
+        .apple-card img {
+            width: 100%; height: 220px; object-fit: contain;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+        .price-tag { font-size: 24px; font-weight: 600; color: var(--gold); }
+
+        /* BUTTONS */
+        .btn-gold {
+            background: var(--gold);
+            color: black;
+            border-radius: 50px;
+            font-weight: 700;
+            border: none;
+            padding: 12px 25px;
+            width: 100%;
             transition: 0.3s;
         }
-        .product-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-        .product-card img { width: 100%; height: 180px; object-fit: contain; }
-        .price { font-size: 22px; font-weight: 700; color: var(--price-red); margin-bottom: 2px; }
-        
-        .emi-text {
-            font-size: 13px;
-            color: var(--bajaj-blue);
-            font-weight: 700;
-            margin-bottom: 10px;
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
+
+        .btn-emi {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            margin-top: 10px;
         }
 
-        .btn-buy { background: #ffd814; border: 1px solid #fcd200; border-radius: 8px; font-weight: 600; width: 100%; padding: 8px; margin-bottom: 5px; }
-        .btn-emi { background: white; border: 1px solid var(--bajaj-blue); color: var(--bajaj-blue); border-radius: 8px; font-weight: 600; width: 100%; padding: 8px; font-size: 14px; }
-        .btn-emi:hover { background: var(--bajaj-blue); color: white; }
+        /* MODALS */
+        .modal-content { background: #1c1c1e; color: white; border: 1px solid var(--gold); border-radius: 30px; }
+        .cart-dot { background: var(--gold); color: black; border-radius: 50%; padding: 2px 6px; font-size: 10px; position: absolute; }
 
-        /* Modal Customization */
-        .bajaj-logo { width: 120px; margin-bottom: 15px; }
+        /* WHATSAPP FLOAT */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--gold); width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: black; font-size: 25px; text-decoration: none; z-index: 1000;
+        }
     </style>
 </head>
 <body>
 
-    <div class="emi-bar">
-        <i class="fas fa-percentage me-2"></i> Shop on Easy EMIs with Bajaj Finserv | No Cost EMI Available at Savitri Electronics
+    <div id="intro-overlay">
+        <div class="intro-text">
+            <span class="gold-span">SAVITRI</span> ELECTRONICS
+        </div>
     </div>
 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                SAVITRI <span>ELECTRONICS & FURNITURE</span>
+            <a class="navbar-brand" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <span class="gold-span">SAVITRI</span> ELECTRONICS & FURNITURE
             </a>
-            <div class="ms-auto d-flex align-items-center">
-                <div class="text-white me-4 cursor-pointer" data-bs-toggle="modal" data-bs-target="#historyModal">
-                    <i class="fas fa-history"></i> <span id="cart-count" class="badge bg-warning text-dark ms-1">0</span>
+            <div class="ms-auto">
+                <div class="position-relative d-inline-block" data-bs-toggle="modal" data-bs-target="#cartModal" style="cursor:pointer">
+                    <i class="fas fa-shopping-bag fa-lg"></i>
+                    <span id="cart-count" class="cart-dot">0</span>
                 </div>
-                <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#cartModal">View Cart</button>
             </div>
         </div>
     </nav>
 
-    <div class="container py-5">
-        <h2 class="fw-bold mb-4" data-aos="fade-right">Best Sellers</h2>
-        
+    <section class="hero">
+        <div class="container" data-aos="fade-up">
+            <h1>Elegance.<br><span class="gold-span">Refined.</span></h1>
+            <p class="lead text-secondary">Premium Electronics & Furniture in Rudrapur.</p>
+            <a href="#store" class="btn btn-gold w-auto px-5 mt-4">Start Shopping</a>
+        </div>
+    </section>
+
+    <div class="container py-5" id="store">
+        <h2 class="mb-5 fw-bold" data-aos="fade-right">Electronics <span class="text-secondary">Pro.</span></h2>
         <div class="row g-4">
-            <div class="col-md-3 col-sm-6">
-                <div class="product-card" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400" alt="LED TV">
-                    <div class="item-name mt-2 fw-bold">Samsung 55" Crystal 4K LED</div>
-                    <p class="price mb-0">₹42,990</p>
-                    <p class="emi-text"><i class="fas fa-credit-card"></i> EMI from ₹2,150/mo*</p>
-                    <button class="btn-buy" onclick="addToCart('Samsung 55 LED', 42990)">Add to Cart</button>
-                    <button class="btn-emi" onclick="showEMIInfo('Samsung 55 LED', 42990)">Bajaj Finance Options</button>
+            <div class="col-md-4">
+                <div class="apple-card" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=500" alt="LED">
+                    <h4 class="fw-bold">Ultra 4K LED TV</h4>
+                    <p class="text-secondary small">Cinematic experience at home.</p>
+                    <div class="price-tag mb-3">₹34,990</div>
+                    <button class="btn-gold" onclick="addToCart('4K LED TV', 34990)">Add to Bag</button>
+                    <button class="btn-emi">Bajaj EMI: ₹2,915/mo</button>
                 </div>
             </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400" alt="Fridge">
-                    <div class="item-name mt-2 fw-bold">Whirlpool 265L Refrigerator</div>
-                    <p class="price mb-0">₹26,400</p>
-                    <p class="emi-text"><i class="fas fa-credit-card"></i> EMI from ₹1,320/mo*</p>
-                    <button class="btn-buy" onclick="addToCart('Whirlpool Refrigerator', 26400)">Add to Cart</button>
-                    <button class="btn-emi" onclick="showEMIInfo('Whirlpool Refrigerator', 26400)">Bajaj Finance Options</button>
+            <div class="col-md-4">
+                <div class="apple-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" alt="Fridge">
+                    <h4 class="fw-bold">Smart Refrigerator</h4>
+                    <p class="text-secondary small">Twin cooling technology.</p>
+                    <div class="price-tag mb-3">₹28,500</div>
+                    <button class="btn-gold" onclick="addToCart('Smart Refrigerator', 28500)">Add to Bag</button>
+                    <button class="btn-emi">Bajaj EMI: ₹2,375/mo</button>
                 </div>
             </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400" alt="Almirah">
-                    <div class="item-name mt-2 fw-bold">Triveni Steel Almirah (Large)</div>
-                    <p class="price mb-0">₹14,500</p>
-                    <p class="emi-text"><i class="fas fa-credit-card"></i> EMI from ₹1,200/mo*</p>
-                    <button class="btn-buy" onclick="addToCart('Triveni Almirah', 14500)">Add to Cart</button>
-                    <button class="btn-emi" onclick="showEMIInfo('Triveni Almirah', 14500)">Bajaj Finance Options</button>
+            <div class="col-md-4">
+                <div class="apple-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=500" alt="Wash">
+                    <h4 class="fw-bold">Washing Machine</h4>
+                    <p class="text-secondary small">AI-Powered deep clean.</p>
+                    <div class="price-tag mb-3">₹18,990</div>
+                    <button class="btn-gold" onclick="addToCart('Washing Machine', 18990)">Add to Bag</button>
+                    <button class="btn-emi">Bajaj EMI: ₹1,582/mo</button>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-3 col-sm-6">
-                <div class="product-card" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1527385352018-3c26dd6c38e6?w=400" alt="Iron">
-                    <div class="item-name mt-2 fw-bold">Philips PowerLife Iron</div>
-                    <p class="price mb-0">₹1,850</p>
-                    <p class="emi-text">No EMI on items below ₹5,000</p>
-                    <button class="btn-buy" onclick="addToCart('Philips Iron', 1850)">Add to Cart</button>
+        <h2 class="my-5 fw-bold" data-aos="fade-right">Furniture <span class="text-secondary">Luxury.</span></h2>
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="apple-card" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=500" alt="Triveni">
+                    <h4 class="fw-bold">Triveni Almirah Gold Edition</h4>
+                    <p class="text-secondary small">Unmatched steel security.</p>
+                    <div class="price-tag mb-3">₹15,200</div>
+                    <button class="btn-gold" onclick="addToCart('Triveni Almirah', 15200)">Add to Bag</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="apple-card" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500" alt="Sofa">
+                    <h4 class="fw-bold">Premium Velvet Sofa</h4>
+                    <p class="text-secondary small">Italian design comfort.</p>
+                    <div class="price-tag mb-3">₹45,000</div>
+                    <button class="btn-gold" onclick="addToCart('Velvet Sofa', 45000)">Add to Bag</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="emiModal" tabindex="-1">
+    <div class="modal fade" id="cartModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-body text-center p-5">
-                    <img src="https://logos-world.net/wp-content/uploads/2023/11/Bajaj-Finserv-Logo.png" class="bajaj-logo" alt="Bajaj Finance">
-                    <h4 class="fw-bold">Easy EMI Available!</h4>
-                    <p id="emiProduct" class="text-muted"></p>
-                    <div class="bg-light p-3 rounded mb-4">
-                        <p class="mb-1">Estimated Monthly Payment</p>
-                        <h2 class="text-primary fw-bold" id="emiCalc">₹0</h2>
-                        <small>*Subject to Bajaj Finserv approval</small>
+                <div class="modal-body p-4">
+                    <h3 class="fw-bold gold-span">Your Bag.</h3>
+                    <div id="cart-list" class="my-4"></div>
+                    <div class="d-flex justify-content-between fs-4 fw-bold border-top pt-3">
+                        <span>Total</span><span id="cart-total">₹0</span>
                     </div>
-                    <ul class="text-start mb-4">
-                        <li><i class="fas fa-check-circle text-success me-2"></i> Zero Down Payment available</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i> Only 1-minute approval process</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i> Bring your Aadhaar & PAN to the store</li>
-                    </ul>
-                    <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold" onclick="checkoutEMI()">APPLY VIA WHATSAPP</button>
+                    <div class="mt-4 p-3 rounded bg-black text-center border border-secondary">
+                        <small class="text-secondary">Scan to Pay (UPI ID: 7080935352@ptyes)</small><br>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=upi://pay?pa=7080935352@ptyes" class="mt-2" alt="QR">
+                    </div>
+                    <button class="btn btn-gold w-100 mt-4 py-3" onclick="checkout()">ORDER ON WHATSAPP</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer class="py-5 text-center border-top border-secondary">
+        <p class="gold-span fw-bold">SAVITRI ELECTRONICS & FURNITURE</p>
+        <p class="text-secondary small">Rudrapur, UP 247204 | +91 7080935352</p>
+    </footer>
+
+    <a href="https://wa.me/917080935352" class="wa-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({ duration: 1000, once: true });
         let cart = [];
-        let selectedEMIItem = "";
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
+        function addToCart(n, p) {
+            cart.push({n, p});
             document.getElementById('cart-count').innerText = cart.length;
-            alert(name + " added to cart!");
+            updateCart();
         }
 
-        function showEMIInfo(name, price) {
-            selectedEMIItem = name;
-            document.getElementById('emiProduct').innerText = "Financing for: " + name;
-            // Simple calculation: Price / 12 months (Estimate)
-            let estimate = Math.round(price / 12);
-            document.getElementById('emiCalc').innerText = "₹" + estimate + "/mo";
-            new bootstrap.Modal(document.getElementById('emiModal')).show();
+        function updateCart() {
+            let l = document.getElementById('cart-list');
+            let t = 0;
+            l.innerHTML = "";
+            cart.forEach(i => {
+                t += i.p;
+                l.innerHTML += `<div class="d-flex justify-content-between mb-2"><span>${i.n}</span><span>₹${i.p.toLocaleString()}</span></div>`;
+            });
+            document.getElementById('cart-total').innerText = '₹' + t.toLocaleString();
         }
 
-        function checkoutEMI() {
-            let msg = `Hi Savitri Electronics! I am interested in buying *${selectedEMIItem}* using *Bajaj Finance EMI*. Please let me know the documents required!`;
-            window.open(`https://wa.me/917080935352?text=${encodeURIComponent(msg)}`, '_blank');
+        function checkout() {
+            if(!cart.length) return alert("Bag is empty");
+            let total = cart.reduce((s, i) => s + i.p, 0);
+            let msg = "*GOLD ORDER - SAVITRI*%0A";
+            cart.forEach(i => msg += `• ${i.n} (₹${i.p})%0A`);
+            msg += `%0A💰 *TOTAL: ₹${total}*%0A💳 *UPI:* 7080935352@ptyes`;
+            window.open(`https://wa.me/917080935352?text=${msg}`, '_blank');
         }
     </script>
 </body>
