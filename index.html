@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savitri Electronics</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#000,#111,#000);
+    color:white;
+    overflow-x:hidden;
+}
+header{
+    position:fixed;
+    width:100%;
+    padding:20px;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    text-align:center;
+    letter-spacing:5px;
+}
+section{
+    padding:120px 20px;
+    text-align:center;
+    animation:fadeUp 1s ease forwards;
+}
+h1{
+    font-weight:300;
+    font-size:40px;
+    margin:0;
+}
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+.card{
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:15px;
+    transition:0.4s;
+}
+.card:hover{
+    transform:translateY(-10px);
+    background:rgba(255,255,255,0.1);
+}
+.button{
+    background:white;
+    color:black;
+    padding:10px 20px;
+    border-radius:25px;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:10px;
+}
+.qr{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    display:inline-block;
+}
+footer{
+    padding:30px;
+    background:#000;
+    text-align:center;
+    font-size:14px;
+    color:gray;
+}
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:white;
+    color:black;
+    padding:15px;
+    border-radius:50%;
+    text-decoration:none;
+    font-size:20px;
+}
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px)}
+    to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<header>
+SAVITRI <br>
+<span style="font-size:12px;letter-spacing:3px;color:gray;">ELECTRONICS & FURNITURE</span>
+</header>
+
+<section style="margin-top:120px;">
+<h1>Premium Living Experience</h1>
+<p style="color:gray;">Modern • Trusted • Affordable</p>
+</section>
+
+<section>
+<h2>Featured Products</h2>
+<div class="products">
+<div class="card">LED TV<br>₹18,999<br><a href="#" class="button">Enquire</a></div>
+<div class="card">Ceiling Fan<br>₹2,499<br><a href="#" class="button">Enquire</a></div>
+<div class="card">Wooden Bed<br>₹22,000<br><a href="#" class="button">Enquire</a></div>
+<div class="card">Sofa Set<br>₹35,000<br><a href="#" class="button">Enquire</a></div>
+</div>
+</section>
+
+<section>
+<h2>Pay via UPI</h2>
+<p style="color:gray;">UPI ID: 7080935352@ptyes</p>
+<div class="qr">
+<img src="savitri_electronics_upi_qr.png" width="200">
+</div>
+<p style="color:gray;">After payment send screenshot on WhatsApp</p>
+</section>
+
+<footer>
+© 2026 Savitri Electronics | savitrielectronics.in
+</footer>
+
+<a class="whatsapp" href="https://wa.me/917080935352" target="_blank">💬</a>
+
+</body>
+</html>
