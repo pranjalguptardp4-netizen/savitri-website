@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAVITRI | Electronics & Furniture</title>
+    <title>SAVITRI | Electronics & Furniture Mega Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,239 +11,298 @@
     
     <style>
         :root {
-            --apple-black: #1d1d1f;
-            --apple-gray: #86868b;
+            --amazon-navy: #131921;
+            --amazon-orange: #febd69;
             --apple-bg: #f5f5f7;
-            --accent: #0071e3; /* Apple Blue */
+            --price-red: #B12704;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: white;
-            color: var(--apple-black);
-            letter-spacing: -0.022em;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #1d1d1f; }
 
-        /* Apple Style Centered Header */
-        .navbar {
-            background: rgba(255, 255, 255, 0.8) !important;
-            backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding: 12px 0;
-        }
-
-        /* THE BRAND NAME REDESIGN */
+        /* Header Redesign */
+        .navbar { background: var(--amazon-navy) !important; padding: 18px 0; }
         .navbar-brand {
             font-weight: 800;
-            font-size: 24px;
+            font-size: 28px;
             letter-spacing: -1px;
-            color: var(--apple-black) !important;
+            color: white !important;
+            cursor: pointer;
             text-transform: uppercase;
-            display: flex;
-            align-items: center;
         }
-        .brand-dot {
-            color: var(--apple-gray);
-            font-weight: 300;
-            margin: 0 8px;
-        }
-        .brand-sub {
-            font-weight: 400;
-            font-size: 14px;
-            letter-spacing: 2px;
-            color: var(--apple-gray);
+        .navbar-brand span { color: var(--amazon-orange); }
+        
+        .nav-tools { color: white; cursor: pointer; transition: 0.3s; }
+        .nav-tools:hover { color: var(--amazon-orange); }
+
+        #cart-count {
+            background: var(--amazon-orange);
+            color: black;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 12px;
+            font-weight: bold;
+            position: relative;
+            top: -10px;
+            left: -5px;
         }
 
-        /* Hero Section - Clean & Bold */
-        .hero {
-            padding: 120px 0;
+        /* Hero */
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=1600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
             text-align: center;
+        }
+
+        /* Category Styling */
+        .section-title {
+            font-weight: 800;
+            font-size: 32px;
+            margin: 40px 0 20px;
+            border-left: 5px solid var(--amazon-orange);
+            padding-left: 15px;
+        }
+
+        .product-card {
+            border: 1px solid #e2e2e2;
+            border-radius: 12px;
+            padding: 15px;
+            height: 100%;
+            transition: 0.3s;
             background: white;
         }
-        .hero h1 {
-            font-weight: 800;
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 24px;
-            color: var(--apple-gray);
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .product-card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
+        .brand-label { font-size: 12px; color: #565959; font-weight: 600; }
+        .item-name { font-weight: 600; font-size: 16px; height: 45px; overflow: hidden; }
+        .price { font-size: 22px; font-weight: 700; color: var(--price-red); }
 
-        /* Product Cards - Minimalist */
-        .apple-card {
-            background: var(--apple-bg);
-            border-radius: 30px;
-            padding: 40px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            height: 100%;
-            overflow: hidden;
-        }
-        .apple-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-        .apple-card img {
+        .btn-buy {
+            background: #ffd814;
+            border: 1px solid #fcd200;
+            border-radius: 8px;
+            padding: 8px;
             width: 100%;
-            height: 300px;
-            object-fit: contain;
-            mix-blend-mode: multiply;
+            font-weight: 500;
         }
+        .btn-buy:hover { background: #f7ca00; }
 
-        /* Large Heading Style */
-        .section-header {
-            font-weight: 700;
-            font-size: 48px;
-            margin-bottom: 60px;
-        }
-
-        /* Contact Pill */
-        .contact-info-pill {
-            background: var(--apple-bg);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 20px;
-        }
-
-        /* WhatsApp */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--apple-black);
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            z-index: 1000;
-            transition: 0.3s;
-        }
-        .wa-float:hover { background: var(--accent); color: white; transform: rotate(15deg); }
+        /* History Section */
+        #order-history-list { font-size: 14px; }
+        .history-item { border-bottom: 1px solid #eee; padding: 10px 0; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand mx-auto" href="#">
-                SAVITRI <span class="brand-dot">|</span> <span class="brand-sub">ELECTRONICS & FURNITURE</span>
+            <a class="navbar-brand" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                SAVITRI <span>ELECTRONICS & FURNITURE</span>
             </a>
+            <div class="ms-auto d-flex align-items-center">
+                <div class="nav-tools me-4" data-bs-toggle="modal" data-bs-target="#historyModal">
+                    <i class="fas fa-history me-1"></i> <span class="d-none d-md-inline">My Orders</span>
+                </div>
+                <div class="nav-tools" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <section class="hero" data-aos="fade-up">
-        <div class="container">
-            <h1 class="display-1">Incredible Power.<br>Exquisite Comfort.</h1>
-            <p>Experience the finest electronics and premium furniture designed for the modern lifestyle in Rudrapur.</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#electronics" class="btn btn-primary rounded-pill px-4 py-2">Shop Electronics</a>
-                <a href="#furniture" class="btn btn-outline-dark rounded-pill px-4 py-2">Explore Furniture</a>
-            </div>
+    <div class="hero-banner">
+        <div class="container" data-aos="zoom-in">
+            <h1 class="display-3 fw-bold">Big Savings. Premium Quality.</h1>
+            <p class="lead">From Triveni Almirahs to 4K LED TVs - We have it all.</p>
         </div>
-    </section>
+    </div>
 
-    <section id="electronics" class="py-5">
-        <div class="container">
-            <h2 class="section-header" data-aos="fade-right">Electronics. <span class="text-muted">Innovation at hand.</span></h2>
-            <div class="row g-4">
-                <div class="col-md-6" data-aos="fade-up">
-                    <div class="apple-card text-center">
-                        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=600" alt="TV">
-                        <h3 class="mt-4 fw-bold">Cinematic Displays</h3>
-                        <p class="text-muted">The future of television is here.</p>
-                    </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="apple-card text-center">
-                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600" alt="Mobile">
-                        <h3 class="mt-4 fw-bold">Mobile Tech</h3>
-                        <p class="text-muted">Next-generation performance.</p>
-                    </div>
+    <div class="container">
+        <h2 class="section-title">Electronics Department</h2>
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card" data-aos="fade-up">
+                    <span class="brand-label">Samsung / LG</span>
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400" alt="Fridge">
+                    <div class="item-name">Double Door Smart Refrigerator</div>
+                    <p class="price">₹24,999</p>
+                    <button class="btn-buy" onclick="addToCart('Smart Refrigerator', 24999)">Add to Cart</button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="furniture" class="py-5 bg-white">
-        <div class="container">
-            <h2 class="section-header" data-aos="fade-left">Furniture. <span class="text-muted">Built for comfort.</span></h2>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="apple-card">
-                        <h4 class="fw-bold">Modern Sofas</h4>
-                        <p class="text-muted">Luxury for your living room.</p>
-                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600" alt="Sofa">
-                    </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="brand-label">Whirlpool</span>
+                    <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=400" alt="Washing Machine">
+                    <div class="item-name">Fully Automatic Washing Machine</div>
+                    <p class="price">₹15,490</p>
+                    <button class="btn-buy" onclick="addToCart('Washing Machine', 15490)">Add to Cart</button>
                 </div>
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="apple-card">
-                        <h4 class="fw-bold">Office Desks</h4>
-                        <p class="text-muted">Work in style.</p>
-                        <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=600" alt="Desk">
-                    </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="brand-label">Sony / Mi</span>
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400" alt="LED TV">
+                    <div class="item-name">55-inch 4K Ultra HD Smart LED</div>
+                    <p class="price">₹38,000</p>
+                    <button class="btn-buy" onclick="addToCart('55-inch LED TV', 38000)">Add to Cart</button>
                 </div>
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="apple-card">
-                        <h4 class="fw-bold">Dining Sets</h4>
-                        <p class="text-muted">Elegant dining experiences.</p>
-                        <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600" alt="Dining">
-                    </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="brand-label">Philips / Bajaj</span>
+                    <img src="https://images.unsplash.com/photo-1527385352018-3c26dd6c38e6?w=400" alt="Iron">
+                    <div class="item-name">Steam Iron with Non-stick Plate</div>
+                    <p class="price">₹1,299</p>
+                    <button class="btn-buy" onclick="addToCart('Steam Iron', 1299)">Add to Cart</button>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="contact" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6" data-aos="fade-up">
-                    <h2 class="section-header">Visit us.</h2>
-                    <div class="contact-info-pill">
-                        <h5>Location</h5>
-                        <p class="text-muted mb-0">Rudrapur, Uttar Pradesh 247204</p>
-                    </div>
-                    <div class="contact-info-pill">
-                        <h5>Call Us</h5>
-                        <p class="text-muted mb-0">+91 7080935352</p>
-                    </div>
+        <h2 class="section-title">Furniture & Storage</h2>
+        <div class="row g-4 mb-5">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card" data-aos="fade-up">
+                    <span class="brand-label">Triveni Almirah</span>
+                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400" alt="Almirah">
+                    <div class="item-name">Triveni Steel 3-Door Almirah</div>
+                    <p class="price">₹12,500</p>
+                    <button class="btn-buy" onclick="addToCart('Triveni Almirah', 12500)">Add to Cart</button>
                 </div>
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="apple-card">
-                        <h3>Ask us anything.</h3>
-                        <form class="mt-4">
-                            <input type="text" class="form-control mb-3 py-3 border-0 bg-white" placeholder="Name">
-                            <input type="email" class="form-control mb-3 py-3 border-0 bg-white" placeholder="Email">
-                            <textarea class="form-control mb-3 py-3 border-0 bg-white" rows="4" placeholder="Your Message"></textarea>
-                            <button class="btn btn-dark w-100 py-3 rounded-pill">Send Inquiry</button>
-                        </form>
-                    </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="brand-label">Premium Furniture</span>
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400" alt="Sofa">
+                    <div class="item-name">L-Shaped Luxury Sofa Set</div>
+                    <p class="price">₹22,000</p>
+                    <button class="btn-buy" onclick="addToCart('Luxury Sofa Set', 22000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="brand-label">Bedroom Sets</span>
+                    <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?w=400" alt="Bed">
+                    <div class="item-name">King Size Teak Wood Bed</div>
+                    <p class="price">₹28,500</p>
+                    <button class="btn-buy" onclick="addToCart('King Size Bed', 28500)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="brand-label">Dining</span>
+                    <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=400" alt="Dining">
+                    <div class="item-name">6-Seater Marble Top Dining Set</div>
+                    <p class="price">₹32,000</p>
+                    <button class="btn-buy" onclick="addToCart('Dining Set', 32000)">Add to Cart</button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <a href="https://wa.me/917080935352" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <footer class="py-5 border-top text-center text-muted">
-        <div class="container">
-            <p>© 2026 Savitri Electronics & Furniture. All rights reserved.</p>
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title">Shopping Cart</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart-list"></div>
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold fs-4">
+                        <span>Total:</span><span id="cart-total">₹0</span>
+                    </div>
+                    <div class="mt-3 p-3 bg-light rounded text-center">
+                        <p class="mb-1">Scan to Pay via UPI</p>
+                        <p class="fw-bold text-primary mb-2">7080935352@ptyes</p>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=7080935352@ptyes" alt="QR">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-danger" onclick="clearCart()">Clear</button>
+                    <button class="btn btn-warning w-100 fw-bold" onclick="checkout()">PLACE ORDER ON WHATSAPP</button>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <div class="modal fade" id="historyModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">My Order History</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="order-history-list">
+                    <p class="text-muted">No past orders found.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-5 text-center">
+        <p class="mb-1">SAVITRI ELECTRONICS & FURNITURE</p>
+        <p class="small text-muted">Rudrapur, Uttar Pradesh 247204 | +91 7080935352</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1200, once: true });
+        AOS.init();
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price, date: new Date().toLocaleDateString() });
+            updateUI();
+        }
+
+        function updateUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            let list = document.getElementById('cart-list');
+            let total = 0;
+            list.innerHTML = cart.length ? '' : '<p>Cart is empty</p>';
+            cart.forEach(item => {
+                total += item.price;
+                list.innerHTML += `<div class="d-flex justify-content-between"><span>${item.name}</span><span>₹${item.price}</span></div>`;
+            });
+            document.getElementById('cart-total').innerText = '₹' + total;
+        }
+
+        function clearCart() { cart = []; updateUI(); }
+
+        function checkout() {
+            if(!cart.length) return alert("Cart empty");
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            let msg = "🛒 *NEW ORDER - SAVITRI*%0A";
+            cart.forEach(i => msg += `• ${i.name} (₹${i.price})%0A`);
+            msg += `%0A💰 *Total: ₹${total}*%0A💳 *UPI:* 7080935352@ptyes`;
+            
+            // Save to History (LocalStorage)
+            let history = JSON.parse(localStorage.getItem('savitri_orders') || '[]');
+            history.push({ items: cart, total: total, date: new Date().toLocaleString() });
+            localStorage.setItem('savitri_orders', JSON.stringify(history));
+            
+            window.open(`https://wa.me/917080935352?text=${msg}`, '_blank');
+            loadHistory();
+            clearCart();
+        }
+
+        function loadHistory() {
+            let history = JSON.parse(localStorage.getItem('savitri_orders') || '[]');
+            let container = document.getElementById('order-history-list');
+            if(history.length) {
+                container.innerHTML = history.reverse().map(order => `
+                    <div class="history-item">
+                        <div class="d-flex justify-content-between"><strong>Order on ${order.date}</strong><span>₹${order.total}</span></div>
+                        <small class="text-muted">${order.items.map(i => i.name).join(', ')}</small>
+                    </div>
+                `).join('');
+            }
+        }
+        window.onload = loadHistory;
     </script>
 </body>
 </html>
-
-
