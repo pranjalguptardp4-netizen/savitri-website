@@ -10,7 +10,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* 1. SMOOTH SCROLLING ADDED HERE */
+        /* 1. SMOOTH SCROLLING */
         html {
             scroll-behavior: smooth;
         }
@@ -29,13 +29,47 @@
             overflow-x: hidden;
         }
 
-        /* 2. CART COUNT POP ANIMATION */
+        /* LOGO MARQUEE CSS */
+        .brand-section {
+            padding: 60px 0;
+            background: #000;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .brand-container {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+        }
+        .brand-name {
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.3);
+            margin: 0 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.4s;
+        }
+        .brand-name:hover {
+            color: var(--gold);
+        }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        /* Gradient Fades for Marquee */
+        .brand-section::before, .brand-section::after {
+            content: ""; height: 100%; width: 150px; position: absolute; z-index: 2; top: 0;
+        }
+        .brand-section::before { left: 0; background: linear-gradient(to right, black, transparent); }
+        .brand-section::after { right: 0; background: linear-gradient(to left, black, transparent); }
+
         #cart-count {
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: inline-block;
         }
 
-        /* 3-SEC CINEMATIC INTRO */
         #intro-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000;
             z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -119,11 +153,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         .wa-float:hover { transform: scale(1.1) rotate(10deg); }
-
-        .form-control {
-            border-radius: 15px; background: #fff; border: 1px solid #d2d2d7;
-            padding: 15px; transition: 0.3s;
-        }
     </style>
 </head>
 <body>
@@ -160,6 +189,39 @@
             </div>
         </div>
     </section>
+
+    <div class="brand-section">
+        <div class="brand-container">
+            <span class="brand-name">VOLTAS</span>
+            <span class="brand-name">LG</span>
+            <span class="brand-name">SAMSUNG</span>
+            <span class="brand-name">SUMMERCOOL</span>
+            <span class="brand-name">HITACHI</span>
+            <span class="brand-name">BLUE STAR</span>
+            <span class="brand-name">LUMINOUS</span>
+            <span class="brand-name">AMAZE</span>
+            <span class="brand-name">BAJAJ</span>
+            <span class="brand-name">WHIRLPOOL</span>
+            <span class="brand-name">HAVELLS</span>
+            <span class="brand-name">USHA</span>
+            <span class="brand-name">SYMPHONY</span>
+            <span class="brand-name">LLOYD</span>
+            <span class="brand-name">VOLTAS</span>
+            <span class="brand-name">LG</span>
+            <span class="brand-name">SAMSUNG</span>
+            <span class="brand-name">SUMMERCOOL</span>
+            <span class="brand-name">HITACHI</span>
+            <span class="brand-name">BLUE STAR</span>
+            <span class="brand-name">LUMINOUS</span>
+            <span class="brand-name">AMAZE</span>
+            <span class="brand-name">BAJAJ</span>
+            <span class="brand-name">WHIRLPOOL</span>
+            <span class="brand-name">HAVELLS</span>
+            <span class="brand-name">USHA</span>
+            <span class="brand-name">SYMPHONY</span>
+            <span class="brand-name">LLOYD</span>
+        </div>
+    </div>
 
     <div id="store" class="container py-5">
         <h2 class="display-5 fw-bold mb-5" data-aos="fade-right">Best Price <span class="text-secondary">Guarantee.</span></h2>
@@ -243,13 +305,10 @@
 
         function addToCart(n, p) {
             cart.push({n, p});
-            
-            // Cart count animation
             const countBadge = document.getElementById('cart-count');
             countBadge.innerText = cart.length;
             countBadge.style.transform = "scale(1.8)";
             setTimeout(() => { countBadge.style.transform = "scale(1)"; }, 300);
-            
             updateCart();
         }
 
