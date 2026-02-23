@@ -29,9 +29,35 @@
             overflow-x: hidden;
         }
 
+        /* PREMIUM PARTNERSHIP HEADING STYLE */
+        .partnership-header {
+            text-align: center;
+            padding-top: 80px;
+            background: #000;
+        }
+        .partner-badge {
+            background: rgba(191, 149, 63, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .partnership-title {
+            font-size: clamp(24px, 5vw, 42px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+
         /* LOGO MARQUEE CSS */
         .brand-section {
-            padding: 60px 0;
+            padding: 40px 0 80px 0;
             background: #000;
             overflow: hidden;
             white-space: nowrap;
@@ -49,16 +75,16 @@
             margin: 0 40px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            transition: color 0.4s;
+            transition: all 0.4s ease;
         }
         .brand-name:hover {
             color: var(--gold);
+            transform: scale(1.1);
         }
         @keyframes scroll {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
-        /* Gradient Fades for Marquee */
         .brand-section::before, .brand-section::after {
             content: ""; height: 100%; width: 150px; position: absolute; z-index: 2; top: 0;
         }
@@ -152,7 +178,6 @@
             z-index: 1000; transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
-        .wa-float:hover { transform: scale(1.1) rotate(10deg); }
     </style>
 </head>
 <body>
@@ -189,6 +214,14 @@
             </div>
         </div>
     </section>
+
+    <div class="partnership-header">
+        <div class="partner-badge" data-aos="fade-up">Authorized Partner</div>
+        <div class="partnership-title" data-aos="fade-up" data-aos-delay="100">
+            <span class="gold-txt">Savitri Electronics & Furniture</span> <br>
+            <span class="text-white-50">Collaborating with Global Leaders.</span>
+        </div>
+    </div>
 
     <div class="brand-section">
         <div class="brand-container">
